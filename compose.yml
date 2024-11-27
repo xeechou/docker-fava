@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  fava:
+    container_name: fava
+    image: tarioch/fava
+    user: $UID:$GID
+    ports:
+      - 40002:5000
+    environment:
+      - BEANCOUNT_INPUT_FILE=/bean/main.beancount
+    volumes:
+      - ${PWD}/ledger:/bean
+    restart: unless-stopped
+networks: {}
